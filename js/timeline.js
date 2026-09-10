@@ -1,0 +1,3 @@
+const phases=[['盘前准备','09:15','09:30'],['开盘观察','09:30','09:45'],['重点盯盘','09:45','10:30'],['工作模式','10:30','14:00'],['午后确认','14:00','14:30'],['尾盘决策','14:30','15:00'],['盘后复盘','15:30','16:00']];
+function m(t){let a=t.split(':');return +a[0]*60+ +a[1]}
+function render(){let n=new Date(),now=n.getHours()*60+n.getMinutes();let html='';let cur='非交易阶段';phases.forEach(p=>{if(now>=m(p[1])&&now<m(p[2]))cur=p[0];html+=`<div ${cur===p[0]?'class="active"':''}>${p[0]} ${p[1]}-${p[2]}</div>`});document.getElementById('timeline').innerHTML=html;document.getElementById('phase').innerText='当前阶段：'+cur;document.getElementById('countdown').innerText='时间：'+n.toLocaleTimeString();} render();setInterval(render,60000);
