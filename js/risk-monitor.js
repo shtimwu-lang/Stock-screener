@@ -1,0 +1,1 @@
+const INDEX_API='https://bold-rice-293b.shtimwu.workers.dev/index';async function monitorRisk(){try{const r=await fetch(INDEX_API);const t=await r.text();const m=t.match(/v_sh000001="(.*?)"/);if(m){const f=m[1].split('~');const pct=Number(f[32]);if(pct<=-2)showAlert('🚨 上证指数跌超2%');}}catch(e){}}setInterval(monitorRisk,30000);monitorRisk();
