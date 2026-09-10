@@ -1,96 +1,192 @@
-body{background:#0d1117;color:#fff;font-family:Arial;margin:0}.container{max-width:1200px;margin:auto;padding:20px}.card{background:#161b22;padding:16px;border-radius:12px;margin-bottom:12px}.active{color:#58a6ff;font-weight:bold}.index-grid {display: grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap: 12px;}.index-card {background: #0d1117;border:1px solid #30363d;border-radius: 12px;padding: 16px;}.index-name {color: #8b949e;margin-bottom: 10px;}.index-value {font-size: 28px;font-weight: bold;}
-.index-grid {
-
-  display: grid;
-
-  grid-template-columns:
-      repeat(
-        auto-fit,
-        minmax(180px,1fr)
-      );
-
-  gap: 12px;
-
+:root{
+  --bg:#0d1117;
+  --card:#161b22;
+  --muted:#8b949e;
+  --border:#30363d;
+  --accent:#539bf5;
+  --profit:#26a69a; /* 绿色代表盈利 */
+  --loss:#ef5350;   /* 红色代表亏损 */
+  --text:#ffffff;
+  --radius:12px;
+  --gap:12px;
+  --max-width:1200px;
+  --font-sans: -apple-system,BlinkMacSystemFont,"Segoe UI","Helvetica Neue",Arial,"Noto Sans","PingFang SC",sans-serif;
 }
 
-.index-card {
+*{box-sizing:border-box}
+html,body{height:100%}
+body{
+  background:var(--bg);
+  color:var(--text);
+  font-family:var(--font-sans);
+  margin:0;
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+  line-height:1.5;
+  font-size:16px;
+}
 
-  background:#0d1117;
+.container{
+  max-width:var(--max-width);
+  margin:0 auto;
+  padding:20px;
+}
 
-  border:1px solid #30363d;
+/* Header / Footer */
+header h1{
+  margin:0 0 6px 0;
+  font-size:1.6rem;
+}
+.muted{color:var(--muted)}
 
-  border-radius:12px;
-
+/* Card base */
+.card{
+  background:var(--card);
   padding:16px;
-
+  border-radius:var(--radius);
+  margin-bottom:16px;
+  border:1px solid rgba(255,255,255,0.03);
+  box-shadow: 0 1px 0 rgba(255,255,255,0.01) inset;
 }
 
-.index-name {
+/* Small utility */
+.row{display:flex;gap:var(--gap);align-items:center}
+.col{flex:1}
 
-  color:#8b949e;
+/* Timeline / development list */
+.timeline ul, .timeline ol{
+  margin:8px 0 0 20px;
+  color:var(--text);
+}
+.timeline h3{margin-top:14px;margin-bottom:6px}
 
+/* Index grid (原有样式保留并格式化) */
+.index-grid{
+  display:grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px,1fr));
+  gap:var(--gap);
+}
+
+/* Index card */
+.index-card{
+  background:var(--bg);
+  border:1px solid var(--border);
+  border-radius:var(--radius);
+  padding:16px;
+  transition:transform .12s ease, box-shadow .12s ease;
+}
+.index-card:hover,
+.index-card:focus-within{
+  transform:translateY(-4px);
+  box-shadow:0 8px 24px rgba(0,0,0,0.45);
+}
+
+/* Names & values */
+.index-name{
+  color:var(--muted);
   margin-bottom:10px;
-
+  font-size:0.95rem;
+}
+.index-value{
+  font-size:1.6rem;
+  font-weight:700;
+  letter-spacing:0.4px;
 }
 
-.index-value {
-
-  font-size:28px;
-
-  font-weight:bold;
-
-}
-
-.position-card {
-
-  background:#0d1117;
-
-  border:1px solid #30363d;
-
+/* Position card */
+.position-card{
+  background:var(--bg);
+  border:1px solid var(--border);
   border-radius:12px;
-
   padding:12px;
-
   margin-bottom:10px;
-
+  transition:background .12s ease;
+}
+.position-card .symbol{
+  font-weight:700;
+  margin-bottom:6px;
+}
+.position-card .meta{
+  color:var(--muted);
+  font-size:0.92rem;
 }
 
-.watch-item {
-
+/* Watch list item */
+.watch-item{
   padding:8px;
-
   margin-top:6px;
-
-  background:#0d1117;
-
+  background:var(--bg);
   border-radius:8px;
-
+  border:1px solid rgba(255,255,255,0.02);
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
 }
 
-.alert-item {
-
+/* Alert item */
+.alert-item{
   background:#7f1d1d;
-
   margin-top:8px;
-
   padding:10px;
-
   border-radius:8px;
-
+  color:#fff;
+  font-weight:600;
 }
 
-.profit {
-
-  color:#ef5350;
-
-  font-weight:bold;
-
+/* Profit / Loss (修正语义：绿=profit, 红=loss) */
+.profit{
+  color:var(--profit);
+  font-weight:700;
+}
+.loss{
+  color:var(--loss);
+  font-weight:700;
 }
 
-.loss {
-
-  color:#26a69a;
-
-  font-weight:bold;
-
+/* Buttons / links */
+.btn{
+  display:inline-block;
+  background:transparent;
+  color:var(--accent);
+  border:1px solid rgba(83,155,245,0.12);
+  padding:8px 12px;
+  border-radius:8px;
+  text-decoration:none;
+  cursor:pointer;
+  transition:background .12s ease, color .12s ease, transform .08s ease;
 }
+.btn:hover{background:rgba(83,155,245,0.06)}
+.btn:active{transform:translateY(1px)}
+
+/* Accessibility: focus outlines */
+a:focus, button:focus, .btn:focus{
+  outline:3px solid rgba(83,155,245,0.18);
+  outline-offset:2px;
+  border-radius:8px;
+}
+
+/* Small screens tweaks */
+@media (max-width:640px){
+  .container{padding:12px}
+  .index-value{font-size:1.25rem}
+  header h1{font-size:1.25rem}
+}
+
+/* Tables / lists inside cards */
+.card table{
+  width:100%;
+  border-collapse:collapse;
+  margin-top:8px;
+}
+.card th, .card td{
+  padding:8px;
+  text-align:left;
+  border-bottom:1px dashed rgba(255,255,255,0.02);
+  font-size:0.95rem;
+  color:var(--text);
+}
+
+/* Minor helpers */
+.kv{display:flex;justify-content:space-between;gap:8px}
+.small{font-size:0.9rem;color:var(--muted)}
+.center{text-align:center}
