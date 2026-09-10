@@ -1,1 +1,127 @@
-<!DOCTYPE html><html lang='zh-CN'><head><meta charset='utf-8'><meta name='viewport' content='width=device-width,initial-scale=1'><title>Hunter Trader OS</title><link rel='stylesheet' href='css/app.css'></head><body><div class='container'><h1>Hunter Trader OS</h1><div class='card'><h2 id='phase'>当前阶段</h2><div id='countdown'></div></div><div class='card'><h2>交易时间轴</h2><div id='timeline'></div></div><div class="card"><h2>指数监控</h2><div id="index-container" class="index-grid">加载中...</div></div><div class="card"><h2>市场情绪</h2><div id="sentiment">加载中...</div></div><div class='card'><h2>持仓作战卡</h2><p>贵州茅台 成本1680 目标1760 止损1630</p></div><div class="card"><h2>持仓管理</h2><div id="portfolio"></div></div><div class="card"><h2>自选股</h2><input id="watch-code"><button onclick="addWatchlist()">添加</button><div id="watchlist"></div></div><div class="card"><h2>预警中心</h2><div id="alerts"></div></div><div class='card'><h2>盘后复盘</h2><textarea style='width:100%;height:120px'></textarea></div></div><script src='js/timeline.js'></script></body></html><script src="js/index-monitor.js"></script><script src="js/alerts.js"></script><script src="js/watchlist.js"></script><script src="js/portfolio.js"></script><script src="js/risk-monitor.js"></script>
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="Hunter Trader OS — 一个轻量级的市场监控与持仓管理工具。开发历程与功能列表。">
+  <title>Hunter Trader OS</title>
+  <link rel="stylesheet" href="css/app.css">
+  <link rel="icon" href="favicon.ico">
+</head>
+<body>
+  <header class="container">
+    <h1>Hunter Trader OS</h1>
+    <p class="muted">轻量、可扩展的股票观察与复盘工具</p>
+  </header>
+
+  <main class="container">
+
+    <section class="card">
+      <h2>Trader OS 开发历程</h2>
+
+      <article class="timeline">
+        <h3>V1.0 基础版</h3>
+        <p>实现：</p>
+        <ul>
+          <li>✅ GitHub Pages 部署</li>
+          <li>✅ GitHub Actions 自动发布</li>
+          <li>✅ 时间轴自动切换</li>
+          <li>✅ 当前阶段显示</li>
+          <li>✅ 市场情绪模块</li>
+          <li>✅ 持仓作战卡</li>
+          <li>✅ 盘后复盘输入框</li>
+        </ul>
+        <p>文件：</p>
+        <ul>
+          <li>index.html</li>
+          <li>css/app.css</li>
+          <li>js/timeline.js</li>
+          <li>.github/workflows/deploy.yml</li>
+        </ul>
+
+        <h3>V2.0 指数监控版</h3>
+        <p>新增：</p>
+        <ul>
+          <li>✅ Cloudflare Worker</li>
+          <li>✅ 腾讯行情接口</li>
+          <li>✅ 指数实时监控</li>
+          <li>✅ 上证指数</li>
+          <li>✅ 深证成指</li>
+          <li>✅ 创业板指</li>
+          <li>✅ 沪深300</li>
+          <li>✅ 市场情绪评分</li>
+          <li>✅ 30秒刷新</li>
+        </ul>
+        <p>新增文件：</p>
+        <ul>
+          <li>js/index-monitor.js</li>
+        </ul>
+        <p>Worker 接口：</p>
+        <ul>
+          <li>/index</li>
+          <li>/quote</li>
+        </ul>
+
+        <h3>V2.1 持仓管理版</h3>
+        <p>新增：</p>
+        <ul>
+          <li>✅ 实时持仓盈亏</li>
+          <li>✅ 自选股管理</li>
+          <li>✅ 止损提醒</li>
+          <li>✅ 目标价提醒</li>
+          <li>✅ 指数风险预警</li>
+        </ul>
+        <p>新增文件：</p>
+        <ul>
+          <li>js/portfolio.js</li>
+          <li>js/watchlist.js</li>
+          <li>js/alerts.js</li>
+          <li>js/risk-monitor.js</li>
+        </ul>
+
+        <h3>V3.2 市场复盘版</h3>
+        <p>新增：</p>
+        <ul>
+          <li>✅ 市场环境复盘</li>
+          <li>✅ 情绪复盘</li>
+          <li>✅ 资金面复盘</li>
+          <li>✅ 执行评分</li>
+          <li>✅ 明日计划</li>
+          <li>✅ LocalStorage 保存</li>
+        </ul>
+        <p>新增文件：</p>
+        <ul>
+          <li>js/market-review.js</li>
+          <li>js/sentiment-review.js</li>
+          <li>js/money-review.js</li>
+          <li>js/review-center.js</li>
+          <li>js/execution-score.js</li>
+        </ul>
+
+        <h4>大盘复盘体系</h4>
+        <ol>
+          <li>① 指数环境 — 上证 / 深证 / 创业板 / 沪深300</li>
+          <li>② 市场情绪 — 开盘情绪 / 收盘情绪 / 情绪变化值</li>
+          <li>③ 市场宽度 — 上涨家数 / 下跌家数 / 涨停家数 / 跌停家数</li>
+          <li>④ 板块轮动 — 今日主线 / 退潮板块</li>
+          <li>⑤ 资金面 — 成交额 / 增量资金 / 放量上涨 / 缩量上涨</li>
+          <li>⑥ 执行评分 — 追高 / 满仓 / 未止损</li>
+          <li>⑦ 明日计划</li>
+        </ol>
+
+      </article>
+
+    </section>
+
+  </main>
+
+  <footer class="container muted">
+    <p>仓库：shtimwu-lang/Stock-screener</p>
+  </footer>
+
+  <!-- 引入脚本（如果存在） -->
+  <script src="js/timeline.js" defer></script>
+  <script src="js/index-monitor.js" defer></script>
+  <script src="js/portfolio.js" defer></script>
+</body>
+</html>
