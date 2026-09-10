@@ -1,1 +1,96 @@
 body{background:#0d1117;color:#fff;font-family:Arial;margin:0}.container{max-width:1200px;margin:auto;padding:20px}.card{background:#161b22;padding:16px;border-radius:12px;margin-bottom:12px}.active{color:#58a6ff;font-weight:bold}.index-grid {display: grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap: 12px;}.index-card {background: #0d1117;border:1px solid #30363d;border-radius: 12px;padding: 16px;}.index-name {color: #8b949e;margin-bottom: 10px;}.index-value {font-size: 28px;font-weight: bold;}
+.index-grid {
+
+  display: grid;
+
+  grid-template-columns:
+      repeat(
+        auto-fit,
+        minmax(180px,1fr)
+      );
+
+  gap: 12px;
+
+}
+
+.index-card {
+
+  background:#0d1117;
+
+  border:1px solid #30363d;
+
+  border-radius:12px;
+
+  padding:16px;
+
+}
+
+.index-name {
+
+  color:#8b949e;
+
+  margin-bottom:10px;
+
+}
+
+.index-value {
+
+  font-size:28px;
+
+  font-weight:bold;
+
+}
+
+.position-card {
+
+  background:#0d1117;
+
+  border:1px solid #30363d;
+
+  border-radius:12px;
+
+  padding:12px;
+
+  margin-bottom:10px;
+
+}
+
+.watch-item {
+
+  padding:8px;
+
+  margin-top:6px;
+
+  background:#0d1117;
+
+  border-radius:8px;
+
+}
+
+.alert-item {
+
+  background:#7f1d1d;
+
+  margin-top:8px;
+
+  padding:10px;
+
+  border-radius:8px;
+
+}
+
+.profit {
+
+  color:#ef5350;
+
+  font-weight:bold;
+
+}
+
+.loss {
+
+  color:#26a69a;
+
+  font-weight:bold;
+
+}
